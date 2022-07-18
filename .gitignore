@@ -1,0 +1,13 @@
+node_modules/
+cairo_venv/
+.env
+coverage
+coverage.json
+typechain
+typechain-types
+.next
+
+#Hardhat files
+cache
+artifacts
+

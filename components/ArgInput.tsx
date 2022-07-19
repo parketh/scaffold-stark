@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect } from "react"
 import { IArgInput } from "../interfaces/ContractFunctions.interface"
 
-const ParamInput: FunctionComponent<IArgInput> = ({ name, type, argIdx, argList, setArgList }) => {
+const ArgInput: FunctionComponent<IArgInput> = ({ name, type, argIdx, argList, setArgList }) => {
     useEffect(() => {
         if (!argList[argIdx]) {
             setArgList([...argList, { name: name, value: "" }])
@@ -31,4 +31,4 @@ const ParamInput: FunctionComponent<IArgInput> = ({ name, type, argIdx, argList,
     )
 }
 
-export default ParamInput
+export default ArgInput

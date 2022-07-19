@@ -10,5 +10,5 @@ done
 if [ -z "$constructor_args" ]
     then npx hardhat starknet-deploy --starknet-network devnet starknet-artifacts/contracts/${contract_name}.cairo
 else 
-    npx hardhat starknet-deploy --starknet-network devnet starknet-artifacts/contracts/${contract_name}.cairo --inputs ${constructor_args}
+    npx hardhat starknet-deploy --starknet-network devnet starknet-artifacts/contracts/${contract_name}.cairo/${contract_name}.json --inputs ${constructor_args}
 fi

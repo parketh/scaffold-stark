@@ -1,10 +1,17 @@
 const Converter = () => {
     return (
-        <div className="flex">
-            <div className="flex flex-col">
-                <span className="">Decimal Number to Felt</span>
-                <span className="">Converts a decimal number to a felt</span>
-            </div>
+        <div className="flex flex-col w-7/12 border items-center p-4 gap-4">
+            <span className="text-6xl">👻</span>
+            <span>
+                Please see{" "}
+                <a
+                    className="cursor-pointer text-blue-500 hover:text-blue-700 active:text-blue-600"
+                    href="https://cairo-utils-web.vercel.app/"
+                >
+                    here
+                </a>{" "}
+                for a unit converter.
+            </span>
         </div>
     )
 }

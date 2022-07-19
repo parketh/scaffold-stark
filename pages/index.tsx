@@ -23,7 +23,7 @@ const Home = () => {
 
     return (
         <div className="flex flex-col justify-center p-5">
-            <StarknetProvider connectors={connectors} autoConnect>
+            <StarknetProvider connectors={connectors}>
                 <ContractContext.Provider value={{ context, setContext }}>
                     <MenuBar />
                     <div className="mb-24"></div>
@@ -44,9 +44,9 @@ const Home = () => {
                         <></>
                     )}
                     {page === "Converter" ? (
-                        <>
+                        <div className="flex justify-center">
                             <Converter />
-                        </>
+                        </div>
                     ) : (
                         <></>
                     )}

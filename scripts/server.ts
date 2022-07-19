@@ -14,7 +14,6 @@ import {
     IContractNameStatus,
     IInputOutput,
 } from "../interfaces/ContractFunctions.interface"
-import { encodeShortString } from "starknet/dist/utils/shortString"
 
 const app = express()
 const port = 3001
@@ -26,6 +25,14 @@ app.use(
         extended: true,
     })
 )
+
+app.get("/", (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Credentials", "true")
+    res.setHeader("Access-Control-Max-Age", "1800")
+    res.setHeader("Access-Control-Allow-Headers", "content-type")
+    res.setHeader("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS")
+})
 
 app.get("/api/predeployed_accounts", async (req, res) => {
     const predeployedAccounts = await starknet.devnet.getPredeployedAccounts()
@@ -49,6 +56,7 @@ app.post("/api/call", async (req, res) => {
     }
 })
 
+// Deprecated
 app.post("/api/invoke", async (req, res) => {
     const invokeFunction = async (
         accountAddress: string,
@@ -92,31 +100,6 @@ app.post("/api/invoke", async (req, res) => {
         await invokeFunction(accountAddress, privateKey, contractName, contractAddress, functionName, args)
     } catch (err) {
         console.error(err)
-    }
-})
-
-app.post("/api/deploy", async (req, res) => {
-    const { contractName, constructorArgs } = req.body
-
-    try {
-        exec(
-            `bash scripts/deploy_constr.sh -n ${contractName} ${constructorArgs ? `-c ${constructorArgs}` : ""}`,
-            (error: null, stdout: any, stderr: any) => {
-                if (error !== null) {
-                    res.status(404).json({ err: error })
-                }
-                res.status(200).json({
-                    address: String(stdout)
-                        .match(/\b0x[a-f0-9]{64}\b/)
-                        ?.toString(),
-                    hash: String(stdout)
-                        .match(/\b0x[a-f0-9]{63}\b/)
-                        ?.toString(),
-                })
-            }
-        )
-    } catch (err) {
-        res.status(404)
     }
 })
 
@@ -173,6 +156,33 @@ app.post("/api/deploy_all", async (req, res) => {
     }
 })
 
+app.post("/api/deploy", async (req, res) => {
+    const { contractName, constructorArgs } = req.body
+
+    try {
+        exec(
+            `bash scripts/deploy.sh -n ${contractName} ${constructorArgs ? `-c ${constructorArgs}` : ""}`,
+            (error: null, stdout: any, stderr: any) => {
+                if (error !== null) {
+                    console.log("error: " + error)
+                }
+
+                const name = String(stdout).match(/(?<=\/)[^\/]*(?=.cairo)/g)
+
+                const address = String(stdout).match(/\b0x[a-f0-9]{64}\b/g)
+
+                const contracts: IContractNameAddress = {
+                    contractName: name ? String(name) : null,
+                    contractAddress: address ? String(address) : null,
+                }
+                res.status(200).json(JSON.stringify(contracts))
+            }
+        )
+    } catch (err) {
+        res.status(404).json({ err: err })
+    }
+})
+
 app.post("/api/get_functions", async (req, res) => {
     try {
         const { contractName, contractAddress } = req.body
@@ -200,16 +210,6 @@ app.post("/api/get_functions", async (req, res) => {
     }
 })
 
-app.get("/api/transaction/:hash", async (req, res) => {
-    try {
-        const { hash } = req.params
-        const tx = await starknet.getTransaction(hash)
-        res.status(200).json(tx)
-    } catch (err) {
-        console.error(err)
-    }
-})
-
 app.post("/api/save_deployments", async (req, res) => {
     try {
         const { updatedContracts } = req.body
@@ -226,6 +226,29 @@ app.post("/api/save_deployments", async (req, res) => {
     }
 })
 
+app.post("/api/add_deployments", async (req, res) => {
+    try {
+        const { newContract } = req.body
+        const jsonPath = path.join(__dirname, "..", "contracts", "deployments.txt")
+
+        fs.readFile(jsonPath, "utf8", (err, data) => {
+            let contracts = JSON.parse(data)
+            contracts.push(newContract)
+            console.log(contracts)
+            const newContent = String(JSON.stringify(contracts))
+            console.log(newContent)
+
+            fs.writeFile(jsonPath, newContent, { flag: "w+" }, (err) => {
+                if (err) throw err
+                console.log("Deployments saved: contracts/deployments.txt")
+                res.status(200)
+            })
+        })
+    } catch (err) {
+        console.error(err)
+    }
+})
+
 app.get("/api/get_deployments", async (req, res) => {
     try {
         const jsonPath = path.join(__dirname, "..", "contracts", "deployments.txt")
@@ -234,6 +257,16 @@ app.get("/api/get_deployments", async (req, res) => {
             if (err) throw err
             res.status(200).json(data)
         })
+    } catch (err) {
+        console.error(err)
+    }
+})
+
+app.get("/api/transaction/:hash", async (req, res) => {
+    try {
+        const { hash } = req.params
+        const tx = await starknet.getTransaction(hash)
+        res.status(200).json(tx)
     } catch (err) {
         console.error(err)
     }

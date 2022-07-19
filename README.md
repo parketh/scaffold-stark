@@ -1,10 +1,10 @@
 # 💠 scaffold-stark
 
-<img width="1231" alt="image" src="https://user-images.githubusercontent.com/27808560/179636761-46006aed-6b86-4486-a8d3-db6599da2c1d.png">
-
 Built at StarkNet Paris Hack 2022. 
 
 **scaffold-stark** is a forkable StarkNet dev stack focused on fast product iterations, inspired by [scaffold-eth](https://github.com/scaffold-eth/scaffold-eth).
+
+<img width="1231" alt="image" src="https://user-images.githubusercontent.com/27808560/179636761-46006aed-6b86-4486-a8d3-db6599da2c1d.png">
 
 Requirements:
  - Node.js

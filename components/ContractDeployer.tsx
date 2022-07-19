@@ -9,6 +9,7 @@ const ContractDeployer = () => {
     const { context, setContext } = useContext(ContractContext) as ISetContractContext
     const [ctrName, setCtrName] = useState("")
     const [ctrArgs, setCtrArgs] = useState("")
+    const [hidden, setHidden] = useState(false)
     const [loadingAll, setLoadingAll] = useState(false)
     const [loadingSingle, setLoadingSingle] = useState(false)
 
@@ -83,43 +84,57 @@ const ContractDeployer = () => {
 
     return (
         <div className="flex flex-col gap-4 w-7/12 relative border border-gray-200 p-6 self-center mb-12">
-            <div className="text-2xl font-semibold w-full">🏭 Contract Deployer</div>
-            <div className="font-semibold w-full">Deploy all contracts</div>
-            <div className="text-sm w-full text-gray-600">
-                Note: Does not currently support constructor arguments. Please deploy contracts individually to specify
-                constructor args.
+            <div className="flex items-center justify-between">
+                <div className="text-2xl font-semibold w-full">🏭 Contract Deployer</div>
+                <span
+                    className="self-center text-sm text-blue-500 select-none cursor-pointer hover:text-blue-300 active:text-blue-400"
+                    onClick={() => setHidden(!hidden)}
+                >
+                    {hidden ? "Show" : "Hide"}
+                </span>
             </div>
-            <Button label="Deploy All" callback={() => deployAllContracts()} />
-            <div>{loadingAll ? <Spinner /> : <></>}</div>
-            <div className="w-full border-b my-3" />
-            <div className="font-semibold w-full">Deploy single contract</div>
-            <div className="flex items-center gap-4">
-                <span className="w-40">Contract name</span>
-                <input
-                    type="text"
-                    className="border rounded px-2 py-0.5 w-full"
-                    placeholder="e.g. 'Contract' for 'Contract.cairo'"
-                    value={ctrName}
-                    onChange={(e) => setCtrName(e.target.value)}
-                />
-            </div>
-            <div className="flex items-center gap-4">
-                <span className="w-40">Constructor args</span>
-                <input
-                    type="text"
-                    className="border rounded px-2 py-0.5 w-full"
-                    placeholder="Constructor args (space delimited)"
-                    value={ctrArgs}
-                    onChange={(e) => setCtrArgs(e.target.value)}
-                />
-            </div>
-            <Button label="Deploy" callback={() => deployContract(ctrName, ctrArgs)} />
-            <div>{loadingSingle ? <Spinner /> : <></>}</div>
-            <div className="w-full border-b my-3" />
-            <div className="font-semibold w-full">Deployed contracts</div>
-            <div className="text-sm w-full text-gray-600">
-                Note: To amend the list of contracts from below, edit contracts/deployments.txt and hit refresh.
-            </div>
+            {hidden ? (
+                <></>
+            ) : (
+                <>
+                    <div className="font-semibold w-full">Deploy all contracts</div>
+                    <div className="text-sm w-full text-gray-600">
+                        Note: Does not currently support constructor arguments. Please deploy contracts individually to
+                        specify constructor args.
+                    </div>
+                    <Button label="Deploy All" callback={() => deployAllContracts()} />
+                    <div>{loadingAll ? <Spinner /> : <></>}</div>
+                    <div className="w-full border-b my-3" />
+                    <div className="font-semibold w-full">Deploy single contract</div>
+                    <div className="flex items-center gap-4">
+                        <span className="w-40">Contract name</span>
+                        <input
+                            type="text"
+                            className="border rounded px-2 py-0.5 w-full"
+                            placeholder="e.g. 'Contract' for 'Contract.cairo'"
+                            value={ctrName}
+                            onChange={(e) => setCtrName(e.target.value)}
+                        />
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <span className="w-40">Constructor args</span>
+                        <input
+                            type="text"
+                            className="border rounded px-2 py-0.5 w-full"
+                            placeholder="Constructor args (space delimited)"
+                            value={ctrArgs}
+                            onChange={(e) => setCtrArgs(e.target.value)}
+                        />
+                    </div>
+                    <Button label="Deploy" callback={() => deployContract(ctrName, ctrArgs)} />
+                    <div>{loadingSingle ? <Spinner /> : <></>}</div>
+                    <div className="w-full border-b my-3" />
+                    <div className="font-semibold w-full">Deployed contracts</div>
+                    <div className="text-sm w-full text-gray-600">
+                        Note: To amend the list of contracts from below, edit contracts/deployments.txt and hit refresh.
+                    </div>
+                </>
+            )}
         </div>
     )
 }

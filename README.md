@@ -9,7 +9,6 @@ Drop in your Cairo smart contracts and immediately compile, deploy and interact 
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/27808560/179943849-1bb59ae8-adb7-44c9-b1b9-ef37c1f43d26.png">
 
 [Link](https://www.youtube.com/watch?v=G7QsyBydCik) to the product demo.
-[Link](https://app.pitch.com/app/player/09ce2e68-01a6-42e2-a195-f5e548aea711/9941798c-b88b-486a-9333-c0c26458aa0d) to pitch deck.
 
 Requirements:
  - Node.js

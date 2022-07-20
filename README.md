@@ -1,7 +1,5 @@
 # 💠 scaffold-stark
 
-Built at StarkNet Paris Hack 2022. 
-
 **scaffold-stark** is a forkable StarkNet dev stack focused on fast product iterations, inspired by [scaffold-eth](https://github.com/scaffold-eth/scaffold-eth).
 
 <img width="1221" alt="image" src="https://user-images.githubusercontent.com/27808560/179943811-f5749cdb-ae3d-4b4d-ae6a-0fc2b3e59e3c.png">

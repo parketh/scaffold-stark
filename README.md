@@ -6,6 +6,8 @@
 
 <img width="1215" alt="image" src="https://user-images.githubusercontent.com/27808560/179943849-1bb59ae8-adb7-44c9-b1b9-ef37c1f43d26.png">
 
+[Link](https://www.youtube.com/watch?v=G7QsyBydCik) to the product demo.
+
 Requirements:
  - Node.js
  - Python venv

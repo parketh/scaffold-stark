@@ -38,7 +38,9 @@ const Connect = () => {
                     <span>localhost</span>
                 </div>
             ) : (
-                "Connect"
+                <span className="flex w-full h-full justify-center items-center rounded-full cursor-pointer hover:bg-blue-100 active:bg-blue-200 select-none">
+                    Connect
+                </span>
             )}
         </div>
     )

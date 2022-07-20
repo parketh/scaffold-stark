@@ -52,20 +52,24 @@ const MenuBar = () => {
                     </div>
                     <div className="flex gap-2 items-center">
                         <span className="text-xl flex">{account ? shortenAddress(account) : ""}</span>
-                        <CopyButton value={account ? account : ""} />
+                        {account ? <CopyButton value={account ? account : ""} /> : <></>}
                     </div>
                     <div className="flex flex-col justify-start">
                         <span className="text-xl flex self-center">
                             {balance ? `${formatWei(Number(balance))} ETH` : ""}
                         </span>
-                        <span
-                            className="self-center text-sm text-blue-500 select-none cursor-pointer hover:text-blue-300 active:text-blue-400"
-                            onClick={() => setOpen(true)}
-                        >
-                            Mint tokens
-                        </span>
+                        {account ? (
+                            <span
+                                className="self-center text-sm text-blue-500 select-none cursor-pointer hover:text-blue-300 active:text-blue-400"
+                                onClick={() => setOpen(true)}
+                            >
+                                Mint tokens
+                            </span>
+                        ) : (
+                            <></>
+                        )}
                     </div>
-                    <RefreshButton callback={getBalance} />
+                    {balance ? <RefreshButton callback={getBalance} /> : ""}
                     <Connect />
                 </div>
             </div>

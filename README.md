@@ -1,10 +1,14 @@
 # 💠 scaffold-stark
 
-Built at StarkNet Paris Hack 2022. 
+**scaffold-stark** is a forkable StarkNet dev stack focused on fast product iterations, inspired by [scaffold-eth](https://github.com/scaffold-eth/scaffold-eth). 
 
-**scaffold-stark** is a forkable StarkNet dev stack focused on fast product iterations, inspired by [scaffold-eth](https://github.com/scaffold-eth/scaffold-eth).
+Drop in your Cairo smart contracts and immediately compile, deploy and interact with them through a reusable frontend UI.
 
-<img width="1231" alt="image" src="https://user-images.githubusercontent.com/27808560/179636761-46006aed-6b86-4486-a8d3-db6599da2c1d.png">
+<img width="1221" alt="image" src="https://user-images.githubusercontent.com/27808560/179943811-f5749cdb-ae3d-4b4d-ae6a-0fc2b3e59e3c.png">
+
+<img width="1215" alt="image" src="https://user-images.githubusercontent.com/27808560/179943849-1bb59ae8-adb7-44c9-b1b9-ef37c1f43d26.png">
+
+[Link](https://www.youtube.com/watch?v=G7QsyBydCik) to the product demo.
 
 Requirements:
  - Node.js

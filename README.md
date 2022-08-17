@@ -35,7 +35,7 @@ pip install -r requirements.txt
 yarn install
 ```
 
-4. Start starknet-devnet in first terminal window running venv (http://localhost:5050)
+4. Start starknet-devnet in first terminal window while running cairo_venv (http://localhost:5050)
 ```shell
 starknet-devnet
 ```

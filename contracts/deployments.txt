@@ -1,1 +1,1 @@
-[]
+[{"contractName":"Contract","contractAddress":"0x079399a9e2622866f9e1c176c90f6ef047fd998d15a0cf2135b3821da8a5560a","contractFunctions":[{"name":"increase_balance","type":"external","inputs":[{"name":"amount","type":"felt"}],"outputs":[]},{"name":"get_balance","type":"view","inputs":[],"outputs":[{"name":"res","type":"felt"}]}]}]

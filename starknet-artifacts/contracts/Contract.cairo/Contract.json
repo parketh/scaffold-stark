@@ -44,6 +44,7 @@
             "pedersen",
             "range_check"
         ],
+        "compiler_version": "0.10.0",
         "data": [
             "0x480680017fff8000",
             "0x53746f7261676552656164",
@@ -154,23 +155,23 @@
         ],
         "debug_info": {
             "file_contents": {
-                "autogen/starknet/arg_processor/1b562308a65653425ce06491fa4b4539466f3251a07e73e099d0afe86a48900e.cairo": "assert [cast(fp + (-4), felt*)] = __calldata_actual_size\n",
-                "autogen/starknet/arg_processor/5e1cc73f0b484f90bb02da164d88332b40c6f698801aa4d3c603dab22157e902.cairo": "let __calldata_actual_size =  __calldata_ptr - cast([cast(fp + (-3), felt**)], felt*)\n",
-                "autogen/starknet/arg_processor/7a16feca69d1dc1343a49177e1e57103319136de3f2c6fabefae170177a1305e.cairo": "let __calldata_arg_amount = [__calldata_ptr]\nlet __calldata_ptr = __calldata_ptr + 1\n",
-                "autogen/starknet/arg_processor/a46542dc358872d57a2d9f424e61d9b07a0e4c72f24e3645022494cebfb47c83.cairo": "assert [__return_value_ptr] = ret_value.res\nlet __return_value_ptr = __return_value_ptr + 1\n",
-                "autogen/starknet/external/get_balance/20386959b740d4e08442b2c64315fb005036579828132cbcfec9ad13f1a1fe20.cairo": "let ret_value = __wrapped_func{syscall_ptr=syscall_ptr, pedersen_ptr=pedersen_ptr, range_check_ptr=range_check_ptr}()\nlet (range_check_ptr, retdata_size, retdata) = get_balance_encode_return(ret_value, range_check_ptr)\n",
-                "autogen/starknet/external/get_balance/424b26e79f70343cc02557f1fbd25745138efb26a3dc5c8b593ca765b73138b7.cairo": "let pedersen_ptr = [cast([cast(fp + (-5), felt**)] + 1, starkware.cairo.common.cairo_builtins.HashBuiltin**)]\n",
-                "autogen/starknet/external/get_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo": "return (syscall_ptr,pedersen_ptr,range_check_ptr,retdata_size,retdata)\n",
-                "autogen/starknet/external/get_balance/c7060df96cb0acca1380ae43bf758cab727bfdf73cb5d34a93e24a9742817fda.cairo": "let syscall_ptr = [cast([cast(fp + (-5), felt**)] + 0, felt**)]\n",
-                "autogen/starknet/external/get_balance/e651458745e7cd218121c342e0915890767e2f59ddc2e315b8844ad0f47d582e.cairo": "let range_check_ptr = [cast([cast(fp + (-5), felt**)] + 2, felt*)]\n",
-                "autogen/starknet/external/increase_balance/424b26e79f70343cc02557f1fbd25745138efb26a3dc5c8b593ca765b73138b7.cairo": "let pedersen_ptr = [cast([cast(fp + (-5), felt**)] + 1, starkware.cairo.common.cairo_builtins.HashBuiltin**)]\n",
-                "autogen/starknet/external/increase_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo": "return (syscall_ptr,pedersen_ptr,range_check_ptr,retdata_size,retdata)\n",
-                "autogen/starknet/external/increase_balance/a6db2128a3f3619309185544498483353bb8f7d03759f9658942a6d6c91744e6.cairo": "let ret_value = __wrapped_func{syscall_ptr=syscall_ptr, pedersen_ptr=pedersen_ptr, range_check_ptr=range_check_ptr}(amount=__calldata_arg_amount,)\n%{ memory[ap] = segments.add() %}        # Allocate memory for return value.\ntempvar retdata : felt*\nlet retdata_size = 0\n",
-                "autogen/starknet/external/increase_balance/c7060df96cb0acca1380ae43bf758cab727bfdf73cb5d34a93e24a9742817fda.cairo": "let syscall_ptr = [cast([cast(fp + (-5), felt**)] + 0, felt**)]\n",
-                "autogen/starknet/external/increase_balance/e651458745e7cd218121c342e0915890767e2f59ddc2e315b8844ad0f47d582e.cairo": "let range_check_ptr = [cast([cast(fp + (-5), felt**)] + 2, felt*)]\n",
-                "autogen/starknet/external/return/get_balance/fcb65f516f78e51724986e29c03bd9c0c6d6597d269ed5dd468f6cd7c811892f.cairo": "func get_balance_encode_return(ret_value : (res : felt), range_check_ptr) -> (\n        range_check_ptr, data_len : felt, data : felt*):\n    %{ memory[ap] = segments.add() %}\n    alloc_locals\n    local __return_value_ptr_start : felt*\n    let __return_value_ptr = __return_value_ptr_start\n    with range_check_ptr:\n    end\n    return (\n        range_check_ptr=range_check_ptr,\n        data_len=__return_value_ptr - __return_value_ptr_start,\n        data=__return_value_ptr_start)\nend\n",
-                "autogen/starknet/storage_var/balance/decl.cairo": "namespace balance:\n    from starkware.starknet.common.storage import normalize_address\n    from starkware.starknet.common.syscalls import storage_read, storage_write\n    from starkware.cairo.common.cairo_builtins import HashBuiltin\n    from starkware.cairo.common.hash import hash2\n\n    func addr{pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (res : felt):\n        let res = 0\n        call hash2\n        call normalize_address\n    end\n\n    func read{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (res : felt):\n        let storage_addr = 0\n        call addr\n        call storage_read\n    end\n\n    func write{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(value : felt):\n        let storage_addr = 0\n        call addr\n        call storage_write\n    end\nend",
-                "autogen/starknet/storage_var/balance/impl.cairo": "namespace balance:\n    from starkware.starknet.common.storage import normalize_address\n    from starkware.starknet.common.syscalls import storage_read, storage_write\n    from starkware.cairo.common.cairo_builtins import HashBuiltin\n    from starkware.cairo.common.hash import hash2\n\n    func addr{pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (res : felt):\n        let res = 916907772491729262376534102982219947830828984996257231353398618781993312401\n        return (res=res)\n    end\n\n    func read{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (res : felt):\n        let (storage_addr) = addr()\n        let (__storage_var_temp0) = storage_read(address=storage_addr + 0)\n\n        tempvar syscall_ptr = syscall_ptr\n        tempvar pedersen_ptr = pedersen_ptr\n        tempvar range_check_ptr = range_check_ptr\n        tempvar __storage_var_temp0 : felt = __storage_var_temp0\n        return ([cast(&__storage_var_temp0, felt*)])\n    end\n\n    func write{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(value : felt):\n        let (storage_addr) = addr()\n        storage_write(address=storage_addr + 0, value=[cast(&value, felt) + 0])\n        return ()\n    end\nend"
+                "autogen/starknet/arg_processor/01cba52f8515996bb9d7070bde81ff39281d096d7024a558efcba6e1fd2402cf.cairo": "assert [cast(fp + (-4), felt*)] = __calldata_actual_size;\n",
+                "autogen/starknet/arg_processor/293368f3a0e12cfcf22314a31e13b9801e95a5b8b2b71822a2fbbdf5a01ea795.cairo": "assert [__return_value_ptr] = ret_value.res;\nlet __return_value_ptr = __return_value_ptr + 1;\n",
+                "autogen/starknet/arg_processor/73e68c490b7650388f650e9e1ff9b2b3ced88dabf86213d6a0831077eb1a0800.cairo": "let __calldata_arg_amount = [__calldata_ptr];\nlet __calldata_ptr = __calldata_ptr + 1;\n",
+                "autogen/starknet/arg_processor/c31620b02d4d706f0542c989b2aadc01b0981d1f6a5933a8fe4937ace3d70d92.cairo": "let __calldata_actual_size =  __calldata_ptr - cast([cast(fp + (-3), felt**)], felt*);\n",
+                "autogen/starknet/external/get_balance/2c767dabe8478bfafd38f9fb907f9842d03e3c9d2b355e2af5c59b126fcc8f59.cairo": "let ret_value = __wrapped_func{syscall_ptr=syscall_ptr, pedersen_ptr=pedersen_ptr, range_check_ptr=range_check_ptr}();\nlet (range_check_ptr, retdata_size, retdata) = get_balance_encode_return(ret_value, range_check_ptr);\n",
+                "autogen/starknet/external/get_balance/741ea357d6336b0bed7bf0472425acd0311d543883b803388880e60a232040c7.cairo": "let range_check_ptr = [cast([cast(fp + (-5), felt**)] + 2, felt*)];\n",
+                "autogen/starknet/external/get_balance/9684a85e93c782014ca14293edea4eb2502039a5a7b6538ecd39c56faaf12529.cairo": "let pedersen_ptr = [cast([cast(fp + (-5), felt**)] + 1, starkware.cairo.common.cairo_builtins.HashBuiltin**)];\n",
+                "autogen/starknet/external/get_balance/b2c52ca2d2a8fc8791a983086d8716c5eacd0c3d62934914d2286f84b98ff4cb.cairo": "let syscall_ptr = [cast([cast(fp + (-5), felt**)] + 0, felt**)];\n",
+                "autogen/starknet/external/get_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo": "return (syscall_ptr,pedersen_ptr,range_check_ptr,retdata_size,retdata);\n",
+                "autogen/starknet/external/increase_balance/741ea357d6336b0bed7bf0472425acd0311d543883b803388880e60a232040c7.cairo": "let range_check_ptr = [cast([cast(fp + (-5), felt**)] + 2, felt*)];\n",
+                "autogen/starknet/external/increase_balance/9684a85e93c782014ca14293edea4eb2502039a5a7b6538ecd39c56faaf12529.cairo": "let pedersen_ptr = [cast([cast(fp + (-5), felt**)] + 1, starkware.cairo.common.cairo_builtins.HashBuiltin**)];\n",
+                "autogen/starknet/external/increase_balance/a41d25a92a3a14a71125d51d48dd7398e2839f055f01551b7b1950eafc1187c0.cairo": "let ret_value = __wrapped_func{syscall_ptr=syscall_ptr, pedersen_ptr=pedersen_ptr, range_check_ptr=range_check_ptr}(amount=__calldata_arg_amount,);\n%{ memory[ap] = segments.add() %}        // Allocate memory for return value.\ntempvar retdata: felt*;\nlet retdata_size = 0;\n",
+                "autogen/starknet/external/increase_balance/b2c52ca2d2a8fc8791a983086d8716c5eacd0c3d62934914d2286f84b98ff4cb.cairo": "let syscall_ptr = [cast([cast(fp + (-5), felt**)] + 0, felt**)];\n",
+                "autogen/starknet/external/increase_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo": "return (syscall_ptr,pedersen_ptr,range_check_ptr,retdata_size,retdata);\n",
+                "autogen/starknet/external/return/get_balance/9ef0a2b9ad0a2e2b202322d7261fff6dada72892e286df2230a9eb8873880a98.cairo": "func get_balance_encode_return(ret_value: (res: felt), range_check_ptr) -> (\n        range_check_ptr: felt, data_len: felt, data: felt*) {\n    %{ memory[ap] = segments.add() %}\n    alloc_locals;\n    local __return_value_ptr_start: felt*;\n    let __return_value_ptr = __return_value_ptr_start;\n    with range_check_ptr {\n    }\n    return (\n        range_check_ptr=range_check_ptr,\n        data_len=__return_value_ptr - __return_value_ptr_start,\n        data=__return_value_ptr_start);\n}\n",
+                "autogen/starknet/storage_var/balance/decl.cairo": "namespace balance {\n    from starkware.starknet.common.storage import normalize_address\n    from starkware.starknet.common.syscalls import storage_read, storage_write\n    from starkware.cairo.common.cairo_builtins import HashBuiltin\n    from starkware.cairo.common.hash import hash2\n\n    func addr{pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (res: felt) {\n        let res = 0;\n        call hash2;\n        call normalize_address;\n    }\n\n    func read{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (res: felt) {\n        let storage_addr = 0;\n        call addr;\n        call storage_read;\n    }\n\n    func write{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(value: felt) {\n        let storage_addr = 0;\n        call addr;\n        call storage_write;\n    }\n}",
+                "autogen/starknet/storage_var/balance/impl.cairo": "namespace balance {\n    from starkware.starknet.common.storage import normalize_address\n    from starkware.starknet.common.syscalls import storage_read, storage_write\n    from starkware.cairo.common.cairo_builtins import HashBuiltin\n    from starkware.cairo.common.hash import hash2\n\n    func addr{pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (res: felt) {\n        let res = 916907772491729262376534102982219947830828984996257231353398618781993312401;\n        return (res=res);\n    }\n\n    func read{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (res: felt) {\n        let (storage_addr) = addr();\n        let (__storage_var_temp0) = storage_read(address=storage_addr + 0);\n\n        tempvar syscall_ptr = syscall_ptr;\n        tempvar pedersen_ptr = pedersen_ptr;\n        tempvar range_check_ptr = range_check_ptr;\n        tempvar __storage_var_temp0: felt = __storage_var_temp0;\n        return ([cast(&__storage_var_temp0, felt*)],);\n    }\n\n    func write{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(value: felt) {\n        let (storage_addr) = addr();\n        storage_write(address=storage_addr + 0, value=[cast(&value, felt) + 0]);\n        return ();\n    }\n}"
             },
             "instruction_locations": {
                 "0": {
@@ -182,12 +183,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 79,
-                        "end_line": 348,
+                        "end_line": 350,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "start_col": 58,
-                        "start_line": 348
+                        "start_line": 350
                     }
                 },
                 "2": {
@@ -198,13 +199,13 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 97,
-                        "end_line": 348,
+                        "end_col": 98,
+                        "end_line": 350,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 348
+                        "start_line": 350
                     }
                 },
                 "3": {
@@ -215,13 +216,13 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 97,
-                        "end_line": 348,
+                        "end_col": 98,
+                        "end_line": 350,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 348
+                        "start_line": 350
                     }
                 },
                 "4": {
@@ -234,48 +235,48 @@
                         {
                             "location": {
                                 "end_col": 87,
-                                "end_line": 349,
+                                "end_line": 351,
                                 "input_file": {
-                                    "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                                    "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                                 },
                                 "start_col": 5,
-                                "start_line": 349
+                                "start_line": 351
                             },
                             "n_prefix_newlines": 0
                         }
                     ],
                     "inst": {
                         "end_col": 53,
-                        "end_line": 351,
+                        "end_line": 353,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 38,
-                                "end_line": 346,
+                                "end_col": 37,
+                                "end_line": 348,
                                 "input_file": {
-                                    "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                                    "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                                 },
                                 "parent_location": [
                                     {
-                                        "end_col": 34,
-                                        "end_line": 352,
+                                        "end_col": 35,
+                                        "end_line": 354,
                                         "input_file": {
-                                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                                         },
                                         "start_col": 5,
-                                        "start_line": 352
+                                        "start_line": 354
                                     },
                                     "While trying to retrieve the implicit argument 'syscall_ptr' in:"
                                 ],
                                 "start_col": 19,
-                                "start_line": 346
+                                "start_line": 348
                             },
                             "While expanding the reference 'syscall_ptr' in:"
                         ],
                         "start_col": 23,
-                        "start_line": 351
+                        "start_line": 353
                     }
                 },
                 "6": {
@@ -287,12 +288,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 33,
-                        "end_line": 352,
+                        "end_line": 354,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "start_col": 19,
-                        "start_line": 352
+                        "start_line": 354
                     }
                 },
                 "7": {
@@ -303,13 +304,13 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 34,
-                        "end_line": 352,
+                        "end_col": 35,
+                        "end_line": 354,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 352
+                        "start_line": 354
                     }
                 },
                 "8": {
@@ -321,12 +322,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 40,
-                        "end_line": 366,
+                        "end_line": 368,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "start_col": 18,
-                        "start_line": 366
+                        "start_line": 368
                     }
                 },
                 "10": {
@@ -337,13 +338,13 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 71,
-                        "end_line": 366,
+                        "end_col": 72,
+                        "end_line": 368,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 365
+                        "start_line": 367
                     }
                 },
                 "11": {
@@ -354,13 +355,13 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 71,
-                        "end_line": 366,
+                        "end_col": 72,
+                        "end_line": 368,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 365
+                        "start_line": 367
                     }
                 },
                 "12": {
@@ -371,13 +372,13 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 71,
-                        "end_line": 366,
+                        "end_col": 72,
+                        "end_line": 368,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 365
+                        "start_line": 367
                     }
                 },
                 "13": {
@@ -390,48 +391,48 @@
                         {
                             "location": {
                                 "end_col": 88,
-                                "end_line": 367,
+                                "end_line": 369,
                                 "input_file": {
-                                    "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                                    "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                                 },
                                 "start_col": 5,
-                                "start_line": 367
+                                "start_line": 369
                             },
                             "n_prefix_newlines": 0
                         }
                     ],
                     "inst": {
                         "end_col": 54,
-                        "end_line": 368,
+                        "end_line": 370,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 39,
-                                "end_line": 364,
+                                "end_col": 38,
+                                "end_line": 366,
                                 "input_file": {
-                                    "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                                    "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                                 },
                                 "parent_location": [
                                     {
-                                        "end_col": 14,
-                                        "end_line": 369,
+                                        "end_col": 15,
+                                        "end_line": 371,
                                         "input_file": {
-                                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                                         },
                                         "start_col": 5,
-                                        "start_line": 369
+                                        "start_line": 371
                                     },
                                     "While trying to retrieve the implicit argument 'syscall_ptr' in:"
                                 ],
                                 "start_col": 20,
-                                "start_line": 364
+                                "start_line": 366
                             },
                             "While expanding the reference 'syscall_ptr' in:"
                         ],
                         "start_col": 23,
-                        "start_line": 368
+                        "start_line": 370
                     }
                 },
                 "15": {
@@ -442,13 +443,13 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 14,
-                        "end_line": 369,
+                        "end_col": 15,
+                        "end_line": 371,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 369
+                        "start_line": 371
                     }
                 },
                 "16": {
@@ -460,21 +461,21 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 42,
+                        "end_col": 41,
                         "end_line": 7,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 42,
+                                "end_col": 41,
                                 "end_line": 7,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/decl.cairo"
                                 },
                                 "parent_location": [
                                     {
-                                        "end_col": 25,
+                                        "end_col": 26,
                                         "end_line": 9,
                                         "input_file": {
                                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
@@ -502,21 +503,21 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 59,
+                        "end_col": 58,
                         "end_line": 7,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 59,
+                                "end_col": 58,
                                 "end_line": 7,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/decl.cairo"
                                 },
                                 "parent_location": [
                                     {
-                                        "end_col": 25,
+                                        "end_col": 26,
                                         "end_line": 9,
                                         "input_file": {
                                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
@@ -526,12 +527,12 @@
                                     },
                                     "While trying to retrieve the implicit argument 'range_check_ptr' in:"
                                 ],
-                                "start_col": 44,
+                                "start_col": 43,
                                 "start_line": 7
                             },
                             "While expanding the reference 'range_check_ptr' in:"
                         ],
-                        "start_col": 44,
+                        "start_col": 43,
                         "start_line": 7
                     }
                 },
@@ -574,7 +575,7 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 25,
+                        "end_col": 26,
                         "end_line": 9,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
@@ -592,14 +593,14 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 63,
+                        "end_col": 61,
                         "end_line": 12,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 42,
+                                "end_col": 41,
                                 "end_line": 7,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -621,7 +622,7 @@
                             },
                             "While expanding the reference 'pedersen_ptr' in:"
                         ],
-                        "start_col": 36,
+                        "start_col": 35,
                         "start_line": 12
                     }
                 },
@@ -634,14 +635,14 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 80,
+                        "end_col": 78,
                         "end_line": 12,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 59,
+                                "end_col": 58,
                                 "end_line": 7,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -658,12 +659,12 @@
                                     },
                                     "While trying to retrieve the implicit argument 'range_check_ptr' in:"
                                 ],
-                                "start_col": 44,
+                                "start_col": 43,
                                 "start_line": 7
                             },
                             "While expanding the reference 'range_check_ptr' in:"
                         ],
-                        "start_col": 65,
+                        "start_col": 63,
                         "start_line": 12
                     }
                 },
@@ -694,17 +695,17 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 34,
+                        "end_col": 33,
                         "end_line": 12,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 38,
-                                "end_line": 346,
+                                "end_col": 37,
+                                "end_line": 348,
                                 "input_file": {
-                                    "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                                    "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                                 },
                                 "parent_location": [
                                     {
@@ -719,7 +720,7 @@
                                     "While trying to retrieve the implicit argument 'syscall_ptr' in:"
                                 ],
                                 "start_col": 19,
-                                "start_line": 346
+                                "start_line": 348
                             },
                             "While expanding the reference 'syscall_ptr' in:"
                         ],
@@ -784,10 +785,10 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 38,
-                        "end_line": 346,
+                        "end_col": 37,
+                        "end_line": 348,
                         "input_file": {
-                            "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                            "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                         },
                         "parent_location": [
                             {
@@ -814,7 +815,7 @@
                             "While trying to update the implicit return value 'syscall_ptr' in:"
                         ],
                         "start_col": 19,
-                        "start_line": 346
+                        "start_line": 348
                     }
                 },
                 "30": {
@@ -826,7 +827,7 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 42,
+                        "end_col": 41,
                         "end_line": 7,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -868,7 +869,7 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 59,
+                        "end_col": 58,
                         "end_line": 7,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -897,7 +898,7 @@
                             },
                             "While trying to update the implicit return value 'range_check_ptr' in:"
                         ],
-                        "start_col": 44,
+                        "start_col": 43,
                         "start_line": 7
                     }
                 },
@@ -917,12 +918,12 @@
                         },
                         "parent_location": [
                             {
-                                "end_col": 65,
+                                "end_col": 64,
                                 "end_line": 19,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/impl.cairo"
                                 },
-                                "start_col": 46,
+                                "start_col": 45,
                                 "start_line": 19
                             },
                             "While expanding the reference '__storage_var_temp0' in:"
@@ -940,7 +941,7 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 53,
+                        "end_col": 55,
                         "end_line": 20,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
@@ -958,14 +959,14 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 64,
+                        "end_col": 62,
                         "end_line": 23,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 42,
+                                "end_col": 41,
                                 "end_line": 7,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -987,7 +988,7 @@
                             },
                             "While expanding the reference 'pedersen_ptr' in:"
                         ],
-                        "start_col": 37,
+                        "start_col": 36,
                         "start_line": 23
                     }
                 },
@@ -1000,14 +1001,14 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 81,
+                        "end_col": 79,
                         "end_line": 23,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 59,
+                                "end_col": 58,
                                 "end_line": 7,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -1024,12 +1025,12 @@
                                     },
                                     "While trying to retrieve the implicit argument 'range_check_ptr' in:"
                                 ],
-                                "start_col": 44,
+                                "start_col": 43,
                                 "start_line": 7
                             },
                             "While expanding the reference 'range_check_ptr' in:"
                         ],
-                        "start_col": 66,
+                        "start_col": 64,
                         "start_line": 23
                     }
                 },
@@ -1060,17 +1061,17 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 35,
+                        "end_col": 34,
                         "end_line": 23,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 39,
-                                "end_line": 364,
+                                "end_col": 38,
+                                "end_line": 366,
                                 "input_file": {
-                                    "filename": "/Users/parkyeung/Documents/Programming/starknet-hardhat-test/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
+                                    "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/cairo_venv/lib/python3.9/site-packages/starkware/starknet/common/syscalls.cairo"
                                 },
                                 "parent_location": [
                                     {
@@ -1085,7 +1086,7 @@
                                     "While trying to retrieve the implicit argument 'syscall_ptr' in:"
                                 ],
                                 "start_col": 20,
-                                "start_line": 364
+                                "start_line": 366
                             },
                             "While expanding the reference 'syscall_ptr' in:"
                         ],
@@ -1168,7 +1169,7 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 42,
+                        "end_col": 41,
                         "end_line": 7,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -1182,14 +1183,14 @@
                                 },
                                 "parent_location": [
                                     {
-                                        "end_col": 64,
+                                        "end_col": 62,
                                         "end_line": 19,
                                         "input_file": {
                                             "filename": "autogen/starknet/storage_var/balance/decl.cairo"
                                         },
                                         "parent_location": [
                                             {
-                                                "end_col": 18,
+                                                "end_col": 19,
                                                 "end_line": 26,
                                                 "input_file": {
                                                     "filename": "autogen/starknet/storage_var/balance/impl.cairo"
@@ -1199,7 +1200,7 @@
                                             },
                                             "While trying to retrieve the implicit argument 'pedersen_ptr' in:"
                                         ],
-                                        "start_col": 37,
+                                        "start_col": 36,
                                         "start_line": 19
                                     },
                                     "While expanding the reference 'pedersen_ptr' in:"
@@ -1222,7 +1223,7 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 59,
+                        "end_col": 58,
                         "end_line": 7,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -1236,14 +1237,14 @@
                                 },
                                 "parent_location": [
                                     {
-                                        "end_col": 81,
+                                        "end_col": 79,
                                         "end_line": 19,
                                         "input_file": {
                                             "filename": "autogen/starknet/storage_var/balance/decl.cairo"
                                         },
                                         "parent_location": [
                                             {
-                                                "end_col": 18,
+                                                "end_col": 19,
                                                 "end_line": 26,
                                                 "input_file": {
                                                     "filename": "autogen/starknet/storage_var/balance/impl.cairo"
@@ -1253,7 +1254,7 @@
                                             },
                                             "While trying to retrieve the implicit argument 'range_check_ptr' in:"
                                         ],
-                                        "start_col": 66,
+                                        "start_col": 64,
                                         "start_line": 19
                                     },
                                     "While expanding the reference 'range_check_ptr' in:"
@@ -1263,7 +1264,7 @@
                             },
                             "While trying to update the implicit return value 'range_check_ptr' in:"
                         ],
-                        "start_col": 44,
+                        "start_col": 43,
                         "start_line": 7
                     }
                 },
@@ -1276,7 +1277,7 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 18,
+                        "end_col": 19,
                         "end_line": 26,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/impl.cairo"
@@ -1294,14 +1295,14 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 24,
-                        "end_line": 14,
+                        "end_col": 41,
+                        "end_line": 13,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 34,
+                                "end_col": 33,
                                 "end_line": 13,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -1309,12 +1310,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 31,
-                                        "end_line": 18,
+                                        "end_line": 16,
                                         "input_file": {
                                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                         },
                                         "start_col": 17,
-                                        "start_line": 18
+                                        "start_line": 16
                                     },
                                     "While trying to retrieve the implicit argument 'syscall_ptr' in:"
                                 ],
@@ -1323,8 +1324,8 @@
                             },
                             "While expanding the reference 'syscall_ptr' in:"
                         ],
-                        "start_col": 5,
-                        "start_line": 14
+                        "start_col": 23,
+                        "start_line": 13
                     }
                 },
                 "47": {
@@ -1336,14 +1337,14 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 32,
-                        "end_line": 15,
+                        "end_col": 69,
+                        "end_line": 13,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 63,
+                                "end_col": 61,
                                 "end_line": 13,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -1351,22 +1352,22 @@
                                 "parent_location": [
                                     {
                                         "end_col": 31,
-                                        "end_line": 18,
+                                        "end_line": 16,
                                         "input_file": {
                                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                         },
                                         "start_col": 17,
-                                        "start_line": 18
+                                        "start_line": 16
                                     },
                                     "While trying to retrieve the implicit argument 'pedersen_ptr' in:"
                                 ],
-                                "start_col": 36,
+                                "start_col": 35,
                                 "start_line": 13
                             },
                             "While expanding the reference 'pedersen_ptr' in:"
                         ],
-                        "start_col": 5,
-                        "start_line": 15
+                        "start_col": 43,
+                        "start_line": 13
                     }
                 },
                 "48": {
@@ -1378,14 +1379,14 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 20,
-                        "end_line": 16,
+                        "end_col": 86,
+                        "end_line": 13,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 80,
+                                "end_col": 78,
                                 "end_line": 13,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -1393,22 +1394,22 @@
                                 "parent_location": [
                                     {
                                         "end_col": 31,
-                                        "end_line": 18,
+                                        "end_line": 16,
                                         "input_file": {
                                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                         },
                                         "start_col": 17,
-                                        "start_line": 18
+                                        "start_line": 16
                                     },
                                     "While trying to retrieve the implicit argument 'range_check_ptr' in:"
                                 ],
-                                "start_col": 65,
+                                "start_col": 63,
                                 "start_line": 13
                             },
                             "While expanding the reference 'range_check_ptr' in:"
                         ],
-                        "start_col": 5,
-                        "start_line": 16
+                        "start_col": 71,
+                        "start_line": 13
                     }
                 },
                 "49": {
@@ -1421,12 +1422,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 31,
-                        "end_line": 18,
+                        "end_line": 16,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "start_col": 17,
-                        "start_line": 18
+                        "start_line": 16
                     }
                 },
                 "51": {
@@ -1438,7 +1439,7 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 34,
+                        "end_col": 33,
                         "end_line": 13,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -1446,13 +1447,13 @@
                         "parent_location": [
                             {
                                 "end_col": 31,
-                                "end_line": 18,
+                                "end_line": 16,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
                                 "parent_location": [
                                     {
-                                        "end_col": 35,
+                                        "end_col": 34,
                                         "end_line": 19,
                                         "input_file": {
                                             "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -1460,12 +1461,12 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 32,
-                                                "end_line": 19,
+                                                "end_line": 17,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 5,
-                                                "start_line": 19
+                                                "start_line": 17
                                             },
                                             "While trying to retrieve the implicit argument 'syscall_ptr' in:"
                                         ],
@@ -1475,7 +1476,7 @@
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
                                 "start_col": 17,
-                                "start_line": 18
+                                "start_line": 16
                             },
                             "While trying to update the implicit return value 'syscall_ptr' in:"
                         ],
@@ -1492,7 +1493,7 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 63,
+                        "end_col": 61,
                         "end_line": 13,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -1500,13 +1501,13 @@
                         "parent_location": [
                             {
                                 "end_col": 31,
-                                "end_line": 18,
+                                "end_line": 16,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
                                 "parent_location": [
                                     {
-                                        "end_col": 64,
+                                        "end_col": 62,
                                         "end_line": 19,
                                         "input_file": {
                                             "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -1514,26 +1515,26 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 32,
-                                                "end_line": 19,
+                                                "end_line": 17,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 5,
-                                                "start_line": 19
+                                                "start_line": 17
                                             },
                                             "While trying to retrieve the implicit argument 'pedersen_ptr' in:"
                                         ],
-                                        "start_col": 37,
+                                        "start_col": 36,
                                         "start_line": 19
                                     },
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 17,
-                                "start_line": 18
+                                "start_line": 16
                             },
                             "While trying to update the implicit return value 'pedersen_ptr' in:"
                         ],
-                        "start_col": 36,
+                        "start_col": 35,
                         "start_line": 13
                     }
                 },
@@ -1546,7 +1547,7 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 80,
+                        "end_col": 78,
                         "end_line": 13,
                         "input_file": {
                             "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -1554,13 +1555,13 @@
                         "parent_location": [
                             {
                                 "end_col": 31,
-                                "end_line": 18,
+                                "end_line": 16,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
                                 "parent_location": [
                                     {
-                                        "end_col": 81,
+                                        "end_col": 79,
                                         "end_line": 19,
                                         "input_file": {
                                             "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -1568,26 +1569,26 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 32,
-                                                "end_line": 19,
+                                                "end_line": 17,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 5,
-                                                "start_line": 19
+                                                "start_line": 17
                                             },
                                             "While trying to retrieve the implicit argument 'range_check_ptr' in:"
                                         ],
-                                        "start_col": 66,
+                                        "start_col": 64,
                                         "start_line": 19
                                     },
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 17,
-                                "start_line": 18
+                                "start_line": 16
                             },
                             "While trying to update the implicit return value 'range_check_ptr' in:"
                         ],
-                        "start_col": 65,
+                        "start_col": 63,
                         "start_line": 13
                     }
                 },
@@ -1601,12 +1602,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 31,
-                        "end_line": 19,
+                        "end_line": 17,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "start_col": 19,
-                        "start_line": 19
+                        "start_line": 17
                     }
                 },
                 "55": {
@@ -1619,12 +1620,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 32,
-                        "end_line": 19,
+                        "end_line": 17,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 19
+                        "start_line": 17
                     }
                 },
                 "57": {
@@ -1636,13 +1637,13 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 14,
-                        "end_line": 20,
+                        "end_col": 15,
+                        "end_line": 18,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 20
+                        "start_line": 18
                     }
                 },
                 "58": {
@@ -1658,12 +1659,12 @@
                         "end_col": 40,
                         "end_line": 2,
                         "input_file": {
-                            "filename": "autogen/starknet/arg_processor/7a16feca69d1dc1343a49177e1e57103319136de3f2c6fabefae170177a1305e.cairo"
+                            "filename": "autogen/starknet/arg_processor/73e68c490b7650388f650e9e1ff9b2b3ced88dabf86213d6a0831077eb1a0800.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 16,
-                                "end_line": 17,
+                                "end_col": 17,
+                                "end_line": 14,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -1672,7 +1673,7 @@
                                         "end_col": 45,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/arg_processor/5e1cc73f0b484f90bb02da164d88332b40c6f698801aa4d3c603dab22157e902.cairo"
+                                            "filename": "autogen/starknet/arg_processor/c31620b02d4d706f0542c989b2aadc01b0981d1f6a5933a8fe4937ace3d70d92.cairo"
                                         },
                                         "parent_location": [
                                             {
@@ -1686,7 +1687,7 @@
                                                         "end_col": 57,
                                                         "end_line": 1,
                                                         "input_file": {
-                                                            "filename": "autogen/starknet/arg_processor/1b562308a65653425ce06491fa4b4539466f3251a07e73e099d0afe86a48900e.cairo"
+                                                            "filename": "autogen/starknet/arg_processor/01cba52f8515996bb9d7070bde81ff39281d096d7024a558efcba6e1fd2402cf.cairo"
                                                         },
                                                         "parent_location": [
                                                             {
@@ -1715,8 +1716,8 @@
                                     },
                                     "While expanding the reference '__calldata_ptr' in:"
                                 ],
-                                "start_col": 3,
-                                "start_line": 17
+                                "start_col": 5,
+                                "start_line": 14
                             },
                             "While handling calldata argument 'amount'"
                         ],
@@ -1734,10 +1735,10 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 57,
+                        "end_col": 58,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/arg_processor/1b562308a65653425ce06491fa4b4539466f3251a07e73e099d0afe86a48900e.cairo"
+                            "filename": "autogen/starknet/arg_processor/01cba52f8515996bb9d7070bde81ff39281d096d7024a558efcba6e1fd2402cf.cairo"
                         },
                         "parent_location": [
                             {
@@ -1768,12 +1769,12 @@
                         "end_col": 64,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/increase_balance/c7060df96cb0acca1380ae43bf758cab727bfdf73cb5d34a93e24a9742817fda.cairo"
+                            "filename": "autogen/starknet/external/increase_balance/b2c52ca2d2a8fc8791a983086d8716c5eacd0c3d62934914d2286f84b98ff4cb.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 24,
-                                "end_line": 14,
+                                "end_col": 41,
+                                "end_line": 13,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -1782,7 +1783,7 @@
                                         "end_col": 55,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/increase_balance/a6db2128a3f3619309185544498483353bb8f7d03759f9658942a6d6c91744e6.cairo"
+                                            "filename": "autogen/starknet/external/increase_balance/a41d25a92a3a14a71125d51d48dd7398e2839f055f01551b7b1950eafc1187c0.cairo"
                                         },
                                         "parent_location": [
                                             {
@@ -1801,8 +1802,8 @@
                                     },
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
-                                "start_col": 5,
-                                "start_line": 14
+                                "start_col": 23,
+                                "start_line": 13
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -1823,12 +1824,12 @@
                         "end_col": 110,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/increase_balance/424b26e79f70343cc02557f1fbd25745138efb26a3dc5c8b593ca765b73138b7.cairo"
+                            "filename": "autogen/starknet/external/increase_balance/9684a85e93c782014ca14293edea4eb2502039a5a7b6538ecd39c56faaf12529.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 32,
-                                "end_line": 15,
+                                "end_col": 69,
+                                "end_line": 13,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -1837,7 +1838,7 @@
                                         "end_col": 82,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/increase_balance/a6db2128a3f3619309185544498483353bb8f7d03759f9658942a6d6c91744e6.cairo"
+                                            "filename": "autogen/starknet/external/increase_balance/a41d25a92a3a14a71125d51d48dd7398e2839f055f01551b7b1950eafc1187c0.cairo"
                                         },
                                         "parent_location": [
                                             {
@@ -1856,8 +1857,8 @@
                                     },
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
-                                "start_col": 5,
-                                "start_line": 15
+                                "start_col": 43,
+                                "start_line": 13
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -1878,12 +1879,12 @@
                         "end_col": 67,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/increase_balance/e651458745e7cd218121c342e0915890767e2f59ddc2e315b8844ad0f47d582e.cairo"
+                            "filename": "autogen/starknet/external/increase_balance/741ea357d6336b0bed7bf0472425acd0311d543883b803388880e60a232040c7.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 20,
-                                "end_line": 16,
+                                "end_col": 86,
+                                "end_line": 13,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -1892,7 +1893,7 @@
                                         "end_col": 115,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/increase_balance/a6db2128a3f3619309185544498483353bb8f7d03759f9658942a6d6c91744e6.cairo"
+                                            "filename": "autogen/starknet/external/increase_balance/a41d25a92a3a14a71125d51d48dd7398e2839f055f01551b7b1950eafc1187c0.cairo"
                                         },
                                         "parent_location": [
                                             {
@@ -1911,8 +1912,8 @@
                                     },
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
-                                "start_col": 5,
-                                "start_line": 16
+                                "start_col": 71,
+                                "start_line": 13
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -1933,12 +1934,12 @@
                         "end_col": 45,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/arg_processor/7a16feca69d1dc1343a49177e1e57103319136de3f2c6fabefae170177a1305e.cairo"
+                            "filename": "autogen/starknet/arg_processor/73e68c490b7650388f650e9e1ff9b2b3ced88dabf86213d6a0831077eb1a0800.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 16,
-                                "end_line": 17,
+                                "end_col": 17,
+                                "end_line": 14,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -1947,7 +1948,7 @@
                                         "end_col": 145,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/increase_balance/a6db2128a3f3619309185544498483353bb8f7d03759f9658942a6d6c91744e6.cairo"
+                                            "filename": "autogen/starknet/external/increase_balance/a41d25a92a3a14a71125d51d48dd7398e2839f055f01551b7b1950eafc1187c0.cairo"
                                         },
                                         "parent_location": [
                                             {
@@ -1966,8 +1967,8 @@
                                     },
                                     "While expanding the reference '__calldata_arg_amount' in:"
                                 ],
-                                "start_col": 3,
-                                "start_line": 17
+                                "start_col": 5,
+                                "start_line": 14
                             },
                             "While handling calldata argument 'amount'"
                         ],
@@ -2008,7 +2009,7 @@
                                 "end_col": 34,
                                 "end_line": 2,
                                 "input_file": {
-                                    "filename": "autogen/starknet/external/increase_balance/a6db2128a3f3619309185544498483353bb8f7d03759f9658942a6d6c91744e6.cairo"
+                                    "filename": "autogen/starknet/external/increase_balance/a41d25a92a3a14a71125d51d48dd7398e2839f055f01551b7b1950eafc1187c0.cairo"
                                 },
                                 "parent_location": [
                                     {
@@ -2032,7 +2033,7 @@
                         "end_col": 24,
                         "end_line": 3,
                         "input_file": {
-                            "filename": "autogen/starknet/external/increase_balance/a6db2128a3f3619309185544498483353bb8f7d03759f9658942a6d6c91744e6.cairo"
+                            "filename": "autogen/starknet/external/increase_balance/a41d25a92a3a14a71125d51d48dd7398e2839f055f01551b7b1950eafc1187c0.cairo"
                         },
                         "parent_location": [
                             {
@@ -2063,7 +2064,7 @@
                         "end_col": 55,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/increase_balance/a6db2128a3f3619309185544498483353bb8f7d03759f9658942a6d6c91744e6.cairo"
+                            "filename": "autogen/starknet/external/increase_balance/a41d25a92a3a14a71125d51d48dd7398e2839f055f01551b7b1950eafc1187c0.cairo"
                         },
                         "parent_location": [
                             {
@@ -2077,7 +2078,7 @@
                                         "end_col": 20,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/increase_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                            "filename": "autogen/starknet/external/increase_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
@@ -2118,7 +2119,7 @@
                         "end_col": 82,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/increase_balance/a6db2128a3f3619309185544498483353bb8f7d03759f9658942a6d6c91744e6.cairo"
+                            "filename": "autogen/starknet/external/increase_balance/a41d25a92a3a14a71125d51d48dd7398e2839f055f01551b7b1950eafc1187c0.cairo"
                         },
                         "parent_location": [
                             {
@@ -2132,7 +2133,7 @@
                                         "end_col": 33,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/increase_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                            "filename": "autogen/starknet/external/increase_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
@@ -2173,7 +2174,7 @@
                         "end_col": 115,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/increase_balance/a6db2128a3f3619309185544498483353bb8f7d03759f9658942a6d6c91744e6.cairo"
+                            "filename": "autogen/starknet/external/increase_balance/a41d25a92a3a14a71125d51d48dd7398e2839f055f01551b7b1950eafc1187c0.cairo"
                         },
                         "parent_location": [
                             {
@@ -2187,7 +2188,7 @@
                                         "end_col": 49,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/increase_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                            "filename": "autogen/starknet/external/increase_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
@@ -2228,7 +2229,7 @@
                         "end_col": 21,
                         "end_line": 4,
                         "input_file": {
-                            "filename": "autogen/starknet/external/increase_balance/a6db2128a3f3619309185544498483353bb8f7d03759f9658942a6d6c91744e6.cairo"
+                            "filename": "autogen/starknet/external/increase_balance/a41d25a92a3a14a71125d51d48dd7398e2839f055f01551b7b1950eafc1187c0.cairo"
                         },
                         "parent_location": [
                             {
@@ -2242,7 +2243,7 @@
                                         "end_col": 62,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/increase_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                            "filename": "autogen/starknet/external/increase_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
@@ -2283,7 +2284,7 @@
                         "end_col": 16,
                         "end_line": 3,
                         "input_file": {
-                            "filename": "autogen/starknet/external/increase_balance/a6db2128a3f3619309185544498483353bb8f7d03759f9658942a6d6c91744e6.cairo"
+                            "filename": "autogen/starknet/external/increase_balance/a41d25a92a3a14a71125d51d48dd7398e2839f055f01551b7b1950eafc1187c0.cairo"
                         },
                         "parent_location": [
                             {
@@ -2297,7 +2298,7 @@
                                         "end_col": 70,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/increase_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                            "filename": "autogen/starknet/external/increase_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
@@ -2335,10 +2336,10 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 71,
+                        "end_col": 72,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/increase_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                            "filename": "autogen/starknet/external/increase_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                         },
                         "parent_location": [
                             {
@@ -2365,14 +2366,14 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 24,
-                        "end_line": 26,
+                        "end_col": 36,
+                        "end_line": 23,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 34,
+                                "end_col": 33,
                                 "end_line": 13,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -2380,12 +2381,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 31,
-                                        "end_line": 30,
+                                        "end_line": 24,
                                         "input_file": {
                                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                         },
                                         "start_col": 17,
-                                        "start_line": 30
+                                        "start_line": 24
                                     },
                                     "While trying to retrieve the implicit argument 'syscall_ptr' in:"
                                 ],
@@ -2394,8 +2395,8 @@
                             },
                             "While expanding the reference 'syscall_ptr' in:"
                         ],
-                        "start_col": 5,
-                        "start_line": 26
+                        "start_col": 18,
+                        "start_line": 23
                     }
                 },
                 "77": {
@@ -2407,14 +2408,14 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 32,
-                        "end_line": 27,
+                        "end_col": 64,
+                        "end_line": 23,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 63,
+                                "end_col": 61,
                                 "end_line": 13,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -2422,22 +2423,22 @@
                                 "parent_location": [
                                     {
                                         "end_col": 31,
-                                        "end_line": 30,
+                                        "end_line": 24,
                                         "input_file": {
                                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                         },
                                         "start_col": 17,
-                                        "start_line": 30
+                                        "start_line": 24
                                     },
                                     "While trying to retrieve the implicit argument 'pedersen_ptr' in:"
                                 ],
-                                "start_col": 36,
+                                "start_col": 35,
                                 "start_line": 13
                             },
                             "While expanding the reference 'pedersen_ptr' in:"
                         ],
-                        "start_col": 5,
-                        "start_line": 27
+                        "start_col": 38,
+                        "start_line": 23
                     }
                 },
                 "78": {
@@ -2449,14 +2450,14 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 20,
-                        "end_line": 28,
+                        "end_col": 81,
+                        "end_line": 23,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 80,
+                                "end_col": 78,
                                 "end_line": 13,
                                 "input_file": {
                                     "filename": "autogen/starknet/storage_var/balance/decl.cairo"
@@ -2464,22 +2465,22 @@
                                 "parent_location": [
                                     {
                                         "end_col": 31,
-                                        "end_line": 30,
+                                        "end_line": 24,
                                         "input_file": {
                                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                         },
                                         "start_col": 17,
-                                        "start_line": 30
+                                        "start_line": 24
                                     },
                                     "While trying to retrieve the implicit argument 'range_check_ptr' in:"
                                 ],
-                                "start_col": 65,
+                                "start_col": 63,
                                 "start_line": 13
                             },
                             "While expanding the reference 'range_check_ptr' in:"
                         ],
-                        "start_col": 5,
-                        "start_line": 28
+                        "start_col": 66,
+                        "start_line": 23
                     }
                 },
                 "79": {
@@ -2492,12 +2493,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 31,
-                        "end_line": 30,
+                        "end_line": 24,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "start_col": 17,
-                        "start_line": 30
+                        "start_line": 24
                     }
                 },
                 "81": {
@@ -2509,13 +2510,13 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 21,
-                        "end_line": 31,
+                        "end_col": 22,
+                        "end_line": 25,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 31
+                        "start_line": 25
                     }
                 },
                 "82": {
@@ -2532,17 +2533,17 @@
                                 "end_col": 38,
                                 "end_line": 3,
                                 "input_file": {
-                                    "filename": "autogen/starknet/external/return/get_balance/fcb65f516f78e51724986e29c03bd9c0c6d6597d269ed5dd468f6cd7c811892f.cairo"
+                                    "filename": "autogen/starknet/external/return/get_balance/9ef0a2b9ad0a2e2b202322d7261fff6dada72892e286df2230a9eb8873880a98.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 17,
-                                        "end_line": 25,
+                                        "end_line": 23,
                                         "input_file": {
                                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                         },
                                         "start_col": 6,
-                                        "start_line": 25
+                                        "start_line": 23
                                     },
                                     "While handling return value of"
                                 ],
@@ -2553,20 +2554,20 @@
                         }
                     ],
                     "inst": {
-                        "end_col": 17,
+                        "end_col": 18,
                         "end_line": 4,
                         "input_file": {
-                            "filename": "autogen/starknet/external/return/get_balance/fcb65f516f78e51724986e29c03bd9c0c6d6597d269ed5dd468f6cd7c811892f.cairo"
+                            "filename": "autogen/starknet/external/return/get_balance/9ef0a2b9ad0a2e2b202322d7261fff6dada72892e286df2230a9eb8873880a98.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While handling return value of"
                         ],
@@ -2584,20 +2585,20 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 44,
+                        "end_col": 45,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/arg_processor/a46542dc358872d57a2d9f424e61d9b07a0e4c72f24e3645022494cebfb47c83.cairo"
+                            "filename": "autogen/starknet/arg_processor/293368f3a0e12cfcf22314a31e13b9801e95a5b8b2b71822a2fbbdf5a01ea795.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 19,
-                                "end_line": 29,
+                                "end_col": 98,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
-                                "start_col": 9,
-                                "start_line": 29
+                                "start_col": 89,
+                                "start_line": 23
                             },
                             "While handling return value 'res'"
                         ],
@@ -2618,12 +2619,12 @@
                         "end_col": 48,
                         "end_line": 2,
                         "input_file": {
-                            "filename": "autogen/starknet/arg_processor/a46542dc358872d57a2d9f424e61d9b07a0e4c72f24e3645022494cebfb47c83.cairo"
+                            "filename": "autogen/starknet/arg_processor/293368f3a0e12cfcf22314a31e13b9801e95a5b8b2b71822a2fbbdf5a01ea795.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 19,
-                                "end_line": 29,
+                                "end_col": 98,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -2632,17 +2633,17 @@
                                         "end_col": 36,
                                         "end_line": 11,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/return/get_balance/fcb65f516f78e51724986e29c03bd9c0c6d6597d269ed5dd468f6cd7c811892f.cairo"
+                                            "filename": "autogen/starknet/external/return/get_balance/9ef0a2b9ad0a2e2b202322d7261fff6dada72892e286df2230a9eb8873880a98.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 25,
+                                                "end_line": 23,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 25
+                                                "start_line": 23
                                             },
                                             "While handling return value of"
                                         ],
@@ -2651,8 +2652,8 @@
                                     },
                                     "While expanding the reference '__return_value_ptr' in:"
                                 ],
-                                "start_col": 9,
-                                "start_line": 29
+                                "start_col": 89,
+                                "start_line": 23
                             },
                             "While handling return value 'res'"
                         ],
@@ -2670,15 +2671,15 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 73,
+                        "end_col": 71,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/return/get_balance/fcb65f516f78e51724986e29c03bd9c0c6d6597d269ed5dd468f6cd7c811892f.cairo"
+                            "filename": "autogen/starknet/external/return/get_balance/9ef0a2b9ad0a2e2b202322d7261fff6dada72892e286df2230a9eb8873880a98.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -2687,17 +2688,17 @@
                                         "end_col": 40,
                                         "end_line": 10,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/return/get_balance/fcb65f516f78e51724986e29c03bd9c0c6d6597d269ed5dd468f6cd7c811892f.cairo"
+                                            "filename": "autogen/starknet/external/return/get_balance/9ef0a2b9ad0a2e2b202322d7261fff6dada72892e286df2230a9eb8873880a98.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 25,
+                                                "end_line": 23,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 25
+                                                "start_line": 23
                                             },
                                             "While handling return value of"
                                         ],
@@ -2707,11 +2708,11 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While handling return value of"
                         ],
-                        "start_col": 58,
+                        "start_col": 56,
                         "start_line": 1
                     }
                 },
@@ -2728,17 +2729,17 @@
                         "end_col": 63,
                         "end_line": 11,
                         "input_file": {
-                            "filename": "autogen/starknet/external/return/get_balance/fcb65f516f78e51724986e29c03bd9c0c6d6597d269ed5dd468f6cd7c811892f.cairo"
+                            "filename": "autogen/starknet/external/return/get_balance/9ef0a2b9ad0a2e2b202322d7261fff6dada72892e286df2230a9eb8873880a98.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While handling return value of"
                         ],
@@ -2759,12 +2760,12 @@
                         "end_col": 35,
                         "end_line": 5,
                         "input_file": {
-                            "filename": "autogen/starknet/external/return/get_balance/fcb65f516f78e51724986e29c03bd9c0c6d6597d269ed5dd468f6cd7c811892f.cairo"
+                            "filename": "autogen/starknet/external/return/get_balance/9ef0a2b9ad0a2e2b202322d7261fff6dada72892e286df2230a9eb8873880a98.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -2773,17 +2774,17 @@
                                         "end_col": 38,
                                         "end_line": 12,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/return/get_balance/fcb65f516f78e51724986e29c03bd9c0c6d6597d269ed5dd468f6cd7c811892f.cairo"
+                                            "filename": "autogen/starknet/external/return/get_balance/9ef0a2b9ad0a2e2b202322d7261fff6dada72892e286df2230a9eb8873880a98.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 25,
+                                                "end_line": 23,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 25
+                                                "start_line": 23
                                             },
                                             "While handling return value of"
                                         ],
@@ -2793,7 +2794,7 @@
                                     "While expanding the reference '__return_value_ptr_start' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While handling return value of"
                         ],
@@ -2811,20 +2812,20 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 39,
+                        "end_col": 40,
                         "end_line": 12,
                         "input_file": {
-                            "filename": "autogen/starknet/external/return/get_balance/fcb65f516f78e51724986e29c03bd9c0c6d6597d269ed5dd468f6cd7c811892f.cairo"
+                            "filename": "autogen/starknet/external/return/get_balance/9ef0a2b9ad0a2e2b202322d7261fff6dada72892e286df2230a9eb8873880a98.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While handling return value of"
                         ],
@@ -2842,20 +2843,20 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 57,
+                        "end_col": 58,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/arg_processor/1b562308a65653425ce06491fa4b4539466f3251a07e73e099d0afe86a48900e.cairo"
+                            "filename": "autogen/starknet/arg_processor/01cba52f8515996bb9d7070bde81ff39281d096d7024a558efcba6e1fd2402cf.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While handling calldata of"
                         ],
@@ -2876,12 +2877,12 @@
                         "end_col": 64,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/get_balance/c7060df96cb0acca1380ae43bf758cab727bfdf73cb5d34a93e24a9742817fda.cairo"
+                            "filename": "autogen/starknet/external/get_balance/b2c52ca2d2a8fc8791a983086d8716c5eacd0c3d62934914d2286f84b98ff4cb.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 24,
-                                "end_line": 26,
+                                "end_col": 36,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -2890,17 +2891,17 @@
                                         "end_col": 55,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/get_balance/20386959b740d4e08442b2c64315fb005036579828132cbcfec9ad13f1a1fe20.cairo"
+                                            "filename": "autogen/starknet/external/get_balance/2c767dabe8478bfafd38f9fb907f9842d03e3c9d2b355e2af5c59b126fcc8f59.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 25,
+                                                "end_line": 23,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 25
+                                                "start_line": 23
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -2909,8 +2910,8 @@
                                     },
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
-                                "start_col": 5,
-                                "start_line": 26
+                                "start_col": 18,
+                                "start_line": 23
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -2931,12 +2932,12 @@
                         "end_col": 110,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/get_balance/424b26e79f70343cc02557f1fbd25745138efb26a3dc5c8b593ca765b73138b7.cairo"
+                            "filename": "autogen/starknet/external/get_balance/9684a85e93c782014ca14293edea4eb2502039a5a7b6538ecd39c56faaf12529.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 32,
-                                "end_line": 27,
+                                "end_col": 64,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -2945,17 +2946,17 @@
                                         "end_col": 82,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/get_balance/20386959b740d4e08442b2c64315fb005036579828132cbcfec9ad13f1a1fe20.cairo"
+                                            "filename": "autogen/starknet/external/get_balance/2c767dabe8478bfafd38f9fb907f9842d03e3c9d2b355e2af5c59b126fcc8f59.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 25,
+                                                "end_line": 23,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 25
+                                                "start_line": 23
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -2964,8 +2965,8 @@
                                     },
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
-                                "start_col": 5,
-                                "start_line": 27
+                                "start_col": 38,
+                                "start_line": 23
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -2986,12 +2987,12 @@
                         "end_col": 67,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/get_balance/e651458745e7cd218121c342e0915890767e2f59ddc2e315b8844ad0f47d582e.cairo"
+                            "filename": "autogen/starknet/external/get_balance/741ea357d6336b0bed7bf0472425acd0311d543883b803388880e60a232040c7.cairo"
                         },
                         "parent_location": [
                             {
-                                "end_col": 20,
-                                "end_line": 28,
+                                "end_col": 81,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -3000,17 +3001,17 @@
                                         "end_col": 115,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/get_balance/20386959b740d4e08442b2c64315fb005036579828132cbcfec9ad13f1a1fe20.cairo"
+                                            "filename": "autogen/starknet/external/get_balance/2c767dabe8478bfafd38f9fb907f9842d03e3c9d2b355e2af5c59b126fcc8f59.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 25,
+                                                "end_line": 23,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 25
+                                                "start_line": 23
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3019,8 +3020,8 @@
                                     },
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
-                                "start_col": 5,
-                                "start_line": 28
+                                "start_col": 66,
+                                "start_line": 23
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3039,12 +3040,12 @@
                     "hints": [],
                     "inst": {
                         "end_col": 17,
-                        "end_line": 25,
+                        "end_line": 23,
                         "input_file": {
                             "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                         },
                         "start_col": 6,
-                        "start_line": 25
+                        "start_line": 23
                     }
                 },
                 "97": {
@@ -3060,12 +3061,12 @@
                         "end_col": 115,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/get_balance/20386959b740d4e08442b2c64315fb005036579828132cbcfec9ad13f1a1fe20.cairo"
+                            "filename": "autogen/starknet/external/get_balance/2c767dabe8478bfafd38f9fb907f9842d03e3c9d2b355e2af5c59b126fcc8f59.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -3074,17 +3075,17 @@
                                         "end_col": 100,
                                         "end_line": 2,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/get_balance/20386959b740d4e08442b2c64315fb005036579828132cbcfec9ad13f1a1fe20.cairo"
+                                            "filename": "autogen/starknet/external/get_balance/2c767dabe8478bfafd38f9fb907f9842d03e3c9d2b355e2af5c59b126fcc8f59.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 25,
+                                                "end_line": 23,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 25
+                                                "start_line": 23
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3094,7 +3095,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3115,17 +3116,17 @@
                         "end_col": 101,
                         "end_line": 2,
                         "input_file": {
-                            "filename": "autogen/starknet/external/get_balance/20386959b740d4e08442b2c64315fb005036579828132cbcfec9ad13f1a1fe20.cairo"
+                            "filename": "autogen/starknet/external/get_balance/2c767dabe8478bfafd38f9fb907f9842d03e3c9d2b355e2af5c59b126fcc8f59.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3146,12 +3147,12 @@
                         "end_col": 55,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/get_balance/20386959b740d4e08442b2c64315fb005036579828132cbcfec9ad13f1a1fe20.cairo"
+                            "filename": "autogen/starknet/external/get_balance/2c767dabe8478bfafd38f9fb907f9842d03e3c9d2b355e2af5c59b126fcc8f59.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -3160,17 +3161,17 @@
                                         "end_col": 20,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/get_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                            "filename": "autogen/starknet/external/get_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 25,
+                                                "end_line": 23,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 25
+                                                "start_line": 23
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3180,7 +3181,7 @@
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3201,12 +3202,12 @@
                         "end_col": 82,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/get_balance/20386959b740d4e08442b2c64315fb005036579828132cbcfec9ad13f1a1fe20.cairo"
+                            "filename": "autogen/starknet/external/get_balance/2c767dabe8478bfafd38f9fb907f9842d03e3c9d2b355e2af5c59b126fcc8f59.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -3215,17 +3216,17 @@
                                         "end_col": 33,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/get_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                            "filename": "autogen/starknet/external/get_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 25,
+                                                "end_line": 23,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 25
+                                                "start_line": 23
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3235,7 +3236,7 @@
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3256,12 +3257,12 @@
                         "end_col": 21,
                         "end_line": 2,
                         "input_file": {
-                            "filename": "autogen/starknet/external/get_balance/20386959b740d4e08442b2c64315fb005036579828132cbcfec9ad13f1a1fe20.cairo"
+                            "filename": "autogen/starknet/external/get_balance/2c767dabe8478bfafd38f9fb907f9842d03e3c9d2b355e2af5c59b126fcc8f59.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -3270,17 +3271,17 @@
                                         "end_col": 49,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/get_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                            "filename": "autogen/starknet/external/get_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 25,
+                                                "end_line": 23,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 25
+                                                "start_line": 23
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3290,7 +3291,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3311,12 +3312,12 @@
                         "end_col": 35,
                         "end_line": 2,
                         "input_file": {
-                            "filename": "autogen/starknet/external/get_balance/20386959b740d4e08442b2c64315fb005036579828132cbcfec9ad13f1a1fe20.cairo"
+                            "filename": "autogen/starknet/external/get_balance/2c767dabe8478bfafd38f9fb907f9842d03e3c9d2b355e2af5c59b126fcc8f59.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -3325,17 +3326,17 @@
                                         "end_col": 62,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/get_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                            "filename": "autogen/starknet/external/get_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 25,
+                                                "end_line": 23,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 25
+                                                "start_line": 23
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3345,7 +3346,7 @@
                                     "While expanding the reference 'retdata_size' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3366,12 +3367,12 @@
                         "end_col": 44,
                         "end_line": 2,
                         "input_file": {
-                            "filename": "autogen/starknet/external/get_balance/20386959b740d4e08442b2c64315fb005036579828132cbcfec9ad13f1a1fe20.cairo"
+                            "filename": "autogen/starknet/external/get_balance/2c767dabe8478bfafd38f9fb907f9842d03e3c9d2b355e2af5c59b126fcc8f59.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
@@ -3380,17 +3381,17 @@
                                         "end_col": 70,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/get_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                                            "filename": "autogen/starknet/external/get_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 25,
+                                                "end_line": 23,
                                                 "input_file": {
                                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 25
+                                                "start_line": 23
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3400,7 +3401,7 @@
                                     "While expanding the reference 'retdata' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3418,20 +3419,20 @@
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
-                        "end_col": 71,
+                        "end_col": 72,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/get_balance/4ba2b119ceb30fe10f4cca3c9d73ef620c0fb5eece91b99a99d71217bba1001c.cairo"
+                            "filename": "autogen/starknet/external/get_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 25,
+                                "end_line": 23,
                                 "input_file": {
                                     "filename": "/Users/parkyeung/Documents/Programming/scaffold-stark/contracts/Contract.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 25
+                                "start_line": 23
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3574,7 +3575,7 @@
                 "type": "struct"
             },
             "__main__.balance.addr.Return": {
-                "cairo_type": "(res : felt)",
+                "cairo_type": "(res: felt)",
                 "type": "type_definition"
             },
             "__main__.balance.addr.SIZEOF_LOCALS": {
@@ -3620,7 +3621,7 @@
                 "type": "struct"
             },
             "__main__.balance.read.Return": {
-                "cairo_type": "(res : felt)",
+                "cairo_type": "(res: felt)",
                 "type": "type_definition"
             },
             "__main__.balance.read.SIZEOF_LOCALS": {
@@ -3711,7 +3712,7 @@
                 "type": "struct"
             },
             "__main__.get_balance.Return": {
-                "cairo_type": "(res : felt)",
+                "cairo_type": "(res: felt)",
                 "type": "type_definition"
             },
             "__main__.get_balance.SIZEOF_LOCALS": {
@@ -3783,7 +3784,7 @@
                 "type": "struct"
             },
             "__wrappers__.get_balance.Return": {
-                "cairo_type": "(syscall_ptr : felt*, pedersen_ptr : starkware.cairo.common.cairo_builtins.HashBuiltin*, range_check_ptr : felt, size : felt, retdata : felt*)",
+                "cairo_type": "(syscall_ptr: felt*, pedersen_ptr: starkware.cairo.common.cairo_builtins.HashBuiltin*, range_check_ptr: felt, size: felt, retdata: felt*)",
                 "type": "type_definition"
             },
             "__wrappers__.get_balance.SIZEOF_LOCALS": {
@@ -3807,7 +3808,7 @@
                         "offset": 1
                     },
                     "ret_value": {
-                        "cairo_type": "(res : felt)",
+                        "cairo_type": "(res: felt)",
                         "offset": 0
                     }
                 },
@@ -3821,7 +3822,7 @@
                 "type": "struct"
             },
             "__wrappers__.get_balance_encode_return.Return": {
-                "cairo_type": "(range_check_ptr : felt, data_len : felt, data : felt*)",
+                "cairo_type": "(range_check_ptr: felt, data_len: felt, data: felt*)",
                 "type": "type_definition"
             },
             "__wrappers__.get_balance_encode_return.SIZEOF_LOCALS": {
@@ -3852,7 +3853,7 @@
                 "type": "struct"
             },
             "__wrappers__.increase_balance.Return": {
-                "cairo_type": "(syscall_ptr : felt*, pedersen_ptr : starkware.cairo.common.cairo_builtins.HashBuiltin*, range_check_ptr : felt, size : felt, retdata : felt*)",
+                "cairo_type": "(syscall_ptr: felt*, pedersen_ptr: starkware.cairo.common.cairo_builtins.HashBuiltin*, range_check_ptr: felt, size: felt, retdata: felt*)",
                 "type": "type_definition"
             },
             "__wrappers__.increase_balance.SIZEOF_LOCALS": {
@@ -3866,6 +3867,14 @@
             "__wrappers__.increase_balance_encode_return.memcpy": {
                 "destination": "starkware.cairo.common.memcpy.memcpy",
                 "type": "alias"
+            },
+            "starkware.cairo.common.bool.FALSE": {
+                "type": "const",
+                "value": 0
+            },
+            "starkware.cairo.common.bool.TRUE": {
+                "type": "const",
+                "value": 1
             },
             "starkware.cairo.common.cairo_builtins.BitwiseBuiltin": {
                 "full_name": "starkware.cairo.common.cairo_builtins.BitwiseBuiltin",
@@ -3940,6 +3949,25 @@
                 "size": 3,
                 "type": "struct"
             },
+            "starkware.cairo.common.cairo_builtins.KeccakBuiltin": {
+                "full_name": "starkware.cairo.common.cairo_builtins.KeccakBuiltin",
+                "members": {
+                    "input": {
+                        "cairo_type": "starkware.cairo.common.keccak_state.KeccakBuiltinState",
+                        "offset": 0
+                    },
+                    "output": {
+                        "cairo_type": "starkware.cairo.common.keccak_state.KeccakBuiltinState",
+                        "offset": 8
+                    }
+                },
+                "size": 16,
+                "type": "struct"
+            },
+            "starkware.cairo.common.cairo_builtins.KeccakBuiltinState": {
+                "destination": "starkware.cairo.common.keccak_state.KeccakBuiltinState",
+                "type": "alias"
+            },
             "starkware.cairo.common.cairo_builtins.SignatureBuiltin": {
                 "full_name": "starkware.cairo.common.cairo_builtins.SignatureBuiltin",
                 "members": {
@@ -3991,6 +4019,53 @@
             },
             "starkware.cairo.common.hash.HashBuiltin": {
                 "destination": "starkware.cairo.common.cairo_builtins.HashBuiltin",
+                "type": "alias"
+            },
+            "starkware.cairo.common.keccak_state.KeccakBuiltinState": {
+                "full_name": "starkware.cairo.common.keccak_state.KeccakBuiltinState",
+                "members": {
+                    "s0": {
+                        "cairo_type": "felt",
+                        "offset": 0
+                    },
+                    "s1": {
+                        "cairo_type": "felt",
+                        "offset": 1
+                    },
+                    "s2": {
+                        "cairo_type": "felt",
+                        "offset": 2
+                    },
+                    "s3": {
+                        "cairo_type": "felt",
+                        "offset": 3
+                    },
+                    "s4": {
+                        "cairo_type": "felt",
+                        "offset": 4
+                    },
+                    "s5": {
+                        "cairo_type": "felt",
+                        "offset": 5
+                    },
+                    "s6": {
+                        "cairo_type": "felt",
+                        "offset": 6
+                    },
+                    "s7": {
+                        "cairo_type": "felt",
+                        "offset": 7
+                    }
+                },
+                "size": 8,
+                "type": "struct"
+            },
+            "starkware.cairo.common.math.FALSE": {
+                "destination": "starkware.cairo.common.bool.FALSE",
+                "type": "alias"
+            },
+            "starkware.cairo.common.math.TRUE": {
+                "destination": "starkware.cairo.common.bool.TRUE",
                 "type": "alias"
             },
             "starkware.starknet.common.storage.ADDR_BOUND": {
@@ -4112,7 +4187,7 @@
                         "cairo_type": "felt",
                         "offset": 2
                     },
-                    "reserved": {
+                    "deploy_from_zero": {
                         "cairo_type": "felt",
                         "offset": 5
                     },
@@ -4629,6 +4704,10 @@
                         "cairo_type": "felt",
                         "offset": 2
                     },
+                    "nonce": {
+                        "cairo_type": "felt",
+                        "offset": 7
+                    },
                     "signature": {
                         "cairo_type": "felt*",
                         "offset": 4
@@ -4646,7 +4725,7 @@
                         "offset": 0
                     }
                 },
-                "size": 7,
+                "size": 8,
                 "type": "struct"
             },
             "starkware.starknet.common.syscalls.storage_read": {
@@ -4677,7 +4756,7 @@
                 "type": "struct"
             },
             "starkware.starknet.common.syscalls.storage_read.Return": {
-                "cairo_type": "(value : felt)",
+                "cairo_type": "(value: felt)",
                 "type": "type_definition"
             },
             "starkware.starknet.common.syscalls.storage_read.SIZEOF_LOCALS": {

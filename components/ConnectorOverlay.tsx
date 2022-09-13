@@ -5,7 +5,8 @@ import { Dialog, Transition } from "@headlessui/react"
 const ConnectorOverlay: FunctionComponent<{
     open: boolean
     setOpen: Dispatch<SetStateAction<boolean>>
-}> = ({ open, setOpen }) => {
+    setHover: Dispatch<SetStateAction<boolean>>
+}> = ({ open, setOpen, setHover }) => {
     const { connect, connectors } = useConnectors()
 
     return (
@@ -52,6 +53,7 @@ const ConnectorOverlay: FunctionComponent<{
                                                         onClick={() => {
                                                             connect(connector)
                                                             setOpen(false)
+                                                            setHover(false)
                                                         }}
                                                     >
                                                         Connect {connector.name()}

@@ -1,44 +1,38 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useConnectors, useStarknet } from "@starknet-react/core"
 import { ConnectorOverlay } from "../components"
 
 const Connect = () => {
     const [open, setOpen] = useState(false)
-    const { connect, connectors } = useConnectors()
+    const [hover, setHover] = useState(false)
     const { account } = useStarknet()
 
-    useEffect(() => {
-        const addAsset = async () => {
-            if (connectors[0]._wallet.request) {
-                try {
-                    const wasAdded = await connectors[0]._wallet.request({
-                        type: "wallet_watchAsset",
-                        params: {
-                            type: "ERC20", // Initially only supports ERC20, but eventually more!
-                            options: {
-                                address: "0x62230ea046a9a5fbc261ac77d03c8d41e5d442db2284587570ab46455fd2488",
-                            },
-                        },
-                    })
-                    console.log("Added token: " + wasAdded)
-                } catch (err) {
-                    console.error(err)
-                }
-            }
-        }
-        addAsset()
-    }, [])
+    const { disconnect } = useConnectors()
 
     return (
-        <div className="w-28 h-8 rounded-full flex justify-center items-center border" onClick={() => setOpen(true)}>
-            <ConnectorOverlay open={open} setOpen={setOpen} />
+        <div className="w-28 h-8 rounded-full flex justify-center items-center border">
+            <ConnectorOverlay open={open} setOpen={setOpen} setHover={setHover} />
             {account ? (
-                <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-green-500" />
-                    <span>localhost</span>
+                <div
+                    className="flex items-center gap-2 w-full h-full justify-center rounded-full hover:cursor-pointer select-none hover:bg-blue-100 active:bg-blue-200"
+                    onClick={() => disconnect()}
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                >
+                    {hover ? (
+                        <span>Disconnect</span>
+                    ) : (
+                        <>
+                            <div className="w-2 h-2 rounded-full bg-green-500" />
+                            <span>localhost</span>
+                        </>
+                    )}
                 </div>
             ) : (
-                <span className="flex w-full h-full justify-center items-center rounded-full cursor-pointer hover:bg-blue-100 active:bg-blue-200 select-none">
+                <span
+                    className="flex w-full h-full justify-center items-center rounded-full cursor-pointer hover:bg-blue-100 active:bg-blue-200 select-none"
+                    onClick={() => setOpen(true)}
+                >
                     Connect
                 </span>
             )}

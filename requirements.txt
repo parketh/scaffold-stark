@@ -9,7 +9,7 @@ bitarray==2.5.1
 CacheControl==0.12.11
 cachetools==5.2.0
 cachy==0.3.0
-cairo-lang==0.9.0
+cairo-lang==0.10.0
 cairo-nile==0.6.1
 certifi==2022.6.15
 charset-normalizer==2.1.0
@@ -91,7 +91,7 @@ requests-toolbelt==0.9.1
 rlp==2.0.1
 shellingham==1.4.0
 six==1.16.0
-starknet-devnet==0.2.5
+starknet-devnet==0.3.0
 sympy==1.10.1
 tomli==2.0.1
 tomlkit==0.11.1

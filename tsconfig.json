@@ -1,19 +1,33 @@
 {
-    "compilerOptions": {
-        "jsx": "preserve",
-        "target": "es2020",
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
-        "skipLibCheck": true,
-        "lib": ["es5", "es6", "dom", "dom.iterable", "esnext"],
-        "allowJs": true,
-        "noEmit": true,
-        "incremental": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true
-    },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "server"],
-    "exclude": ["node_modules"]
+  "compilerOptions": {
+    "jsx": "preserve",
+    "target": "es2020",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "lib": [
+      "es5",
+      "es6",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleResolution": "node"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "server"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

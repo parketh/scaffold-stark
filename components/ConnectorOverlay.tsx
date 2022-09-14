@@ -49,7 +49,7 @@ const ConnectorOverlay: FunctionComponent<{
                                                 connector.available() ? (
                                                     <button
                                                         key={connector.id()}
-                                                        className="hover:bg-blue-200 p-2 rounded cursor-pointer text-left"
+                                                        className="hover:bg-blue-200 p-2 px-4 rounded cursor-pointer text-left border"
                                                         onClick={() => {
                                                             connect(connector)
                                                             setOpen(false)

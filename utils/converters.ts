@@ -81,4 +81,44 @@ function feltArrayToString(input: string): ConvertOutput<string | null> {
     }
 }
 
-export { decimalToFelt, shortStringToFelt, feltToShortString, stringToFeltArray, feltArrayToString }
+function bigNumberToHex(bn: bigint) {
+    bn = BigInt(bn)
+
+    var pos = true
+    if (bn < 0) {
+        pos = false
+        bn = bitnot(bn)
+    }
+
+    var hex = bn.toString(16)
+    if (hex.length % 2) {
+        hex = "0" + hex
+    }
+
+    if (pos && 0x80 & parseInt(hex.slice(0, 2), 16)) {
+        hex = "00" + hex
+    }
+
+    return hex
+}
+
+function bitnot(bn: bigint) {
+    bn = -bn
+    var bin = bn.toString(2)
+    var prefix = ""
+    while (bin.length % 8) {
+        bin = "0" + bin
+    }
+    if ("1" === bin[0] && -1 !== bin.slice(1).indexOf("1")) {
+        prefix = "11111111"
+    }
+    bin = bin
+        .split("")
+        .map(function (i) {
+            return "0" === i ? "1" : "0"
+        })
+        .join("")
+    return BigInt("0b" + prefix + bin) + BigInt(1)
+}
+
+export { bigNumberToHex, decimalToFelt, shortStringToFelt, feltToShortString, stringToFeltArray, feltArrayToString }

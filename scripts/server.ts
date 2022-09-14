@@ -50,54 +50,7 @@ app.post("/api/call", async (req, res) => {
     try {
         const { contractName, contractAddress, functionName } = req.body
         const callResponse = await callFunction(contractName, contractAddress, functionName)
-        res.status(200).json(JSON.stringify({ res: Number(callResponse.res) }))
-    } catch (err) {
-        console.error(err)
-    }
-})
-
-// Deprecated
-app.post("/api/invoke", async (req, res) => {
-    const invokeFunction = async (
-        accountAddress: string,
-        privateKey: string,
-        contractName: string,
-        contractAddress: string,
-        functionName: string,
-        args: any
-    ) => {
-        const formattedArgs = Object.keys(args)
-            .map((k) => {
-                return args[k]
-            })
-            .toString()
-
-        try {
-            exec(
-                `bash scripts/invoke.sh -n ${contractName} -c ${contractAddress} -f ${functionName} -i ${formattedArgs} -a ${accountAddress} -p ${privateKey}`,
-                (error: null, stdout: any, stderr: any) => {
-                    if (error !== null) {
-                        res.status(404).json({ err: error })
-                    } else {
-                        res.status(200).json({
-                            address: String(stdout)
-                                .match(/\b0x[a-f0-9]{64}\b/)
-                                ?.toString(),
-                            hash: String(stdout)
-                                .match(/\b0x[a-f0-9]{63}\b/)
-                                ?.toString(),
-                        })
-                    }
-                }
-            )
-        } catch (err) {
-            res.status(404).json({ err: err })
-        }
-    }
-
-    try {
-        const { accountAddress, privateKey, contractName, contractAddress, functionName, args } = req.body
-        await invokeFunction(accountAddress, privateKey, contractName, contractAddress, functionName, args)
+        res.status(200).json(JSON.stringify({ res: callResponse.res.toString() }))
     } catch (err) {
         console.error(err)
     }

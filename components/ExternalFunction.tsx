@@ -2,7 +2,7 @@ import { Dispatch, FunctionComponent, SetStateAction } from "react"
 import { useStarknetInvoke } from "@starknet-react/core"
 
 import { ArgInput, Button } from "./index"
-import { IArg, IContractFunctions, IInputOutputList } from "../interfaces/ContractFunctions.interface"
+import { IArg, IInputOutputList } from "../interfaces/ContractFunctions.interface"
 import { Contract } from "starknet"
 
 const ExternalFunction: FunctionComponent<{
@@ -23,7 +23,6 @@ const ExternalFunction: FunctionComponent<{
 
     const handleInvoke = () => {
         const args = argList.map((arg) => arg.value)
-        console.log(args)
 
         invokeFunction(functionName, args)
     }

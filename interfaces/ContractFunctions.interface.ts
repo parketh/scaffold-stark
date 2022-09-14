@@ -89,3 +89,8 @@ export interface IAccountBalance {
 export interface StarkNetWindow extends Window {
     starknet: IStarknetWindowObject | undefined
 }
+
+export enum DisplayType {
+    felt,
+    hex,
+}

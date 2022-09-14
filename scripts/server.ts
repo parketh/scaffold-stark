@@ -161,7 +161,7 @@ app.post("/api/deploy", async (req, res) => {
 
     try {
         exec(
-            `bash scripts/deploy.sh -n ${contractName} ${constructorArgs ? `-c ${constructorArgs}` : ""}`,
+            `bash scripts/deploy.sh -n ${contractName} ${constructorArgs ? `-c "${constructorArgs}"` : ""}`,
             (error: null, stdout: any, stderr: any) => {
                 if (error !== null) {
                     console.log("error: " + error)
@@ -175,6 +175,7 @@ app.post("/api/deploy", async (req, res) => {
                     contractName: name ? String(name) : null,
                     contractAddress: address ? String(address) : null,
                 }
+
                 res.status(200).json(JSON.stringify(contracts))
             }
         )

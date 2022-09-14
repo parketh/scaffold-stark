@@ -9,7 +9,7 @@ const ContractDeployer = () => {
     const { context, setContext } = useContext(ContractContext) as ISetContractContext
     const [ctrName, setCtrName] = useState("")
     const [ctrArgs, setCtrArgs] = useState("")
-    const [hidden, setHidden] = useState(false)
+    const [hidden, setHidden] = useState(true)
     const [loadingAll, setLoadingAll] = useState(false)
     const [loadingSingle, setLoadingSingle] = useState(false)
 
